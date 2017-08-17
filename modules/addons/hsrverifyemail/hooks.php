@@ -15,6 +15,7 @@
 require_once __DIR__.'/includes.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use HSR\Hooks;
 
 $setting = Capsule::table('tbladdonmodules')
                 ->where('module','=','hsrverifyemail')
@@ -23,8 +24,6 @@ $setting = Capsule::table('tbladdonmodules')
 
 if($setting->value == 'yes')
 {
-
-    use HSR\Hooks;
     Hooks::init()->addHooks([
         'ClientAdd',
         'ClientLogin',
